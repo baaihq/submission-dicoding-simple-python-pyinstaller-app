@@ -53,6 +53,10 @@ pipeline {
             post {
                 success {
                     archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals" 
+                    script {
+                        echo 'Tes deploy selama satu menit...'
+                        sh 'sleep 60'
+                    }
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
